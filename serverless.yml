@@ -1,0 +1,27 @@
+service: azure-heartbeat
+plugins:
+  - serverless-offline
+  - serverless-azure-functions
+frameworkVersion: "3"
+provider:
+  name: azure
+  region: Canada Central
+  runtime: nodejs12
+  os: windows
+  prefix: dev-nodejs
+  subscriptionId: fd15fc7d-6c11-4e4f-8bd6-2fcc9dfd1e29
+  resourceGroup: dev-nodejs-functions-re01
+package:
+  patterns:
+    - "package.json"
+    - "!local.settings.json"
+    - "!README*"
+functions:
+  RunSitesHeartbeat:
+    handler: src/handlers/handler.RunSitesHeartbeat
+    events:
+      - timer: true
+        name: RunSitesHeartbeat
+        x-azure-settings:
+          schedule: 0 */15 * * * *
+    name: azure-heartbeat-dev-hello
