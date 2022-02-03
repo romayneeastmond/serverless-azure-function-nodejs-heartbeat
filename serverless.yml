@@ -14,6 +14,7 @@ provider:
 package:
   patterns:
     - "package.json"
+    - "!.vscode"
     - "!local.settings.json"
     - "!README*"
 functions:
