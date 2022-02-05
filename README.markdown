@@ -1,6 +1,6 @@
 # Severless Framework Azure Functions, Sites Heartbeat
 
-A project created from the azure-nodejs template of the Serverless Framework. It creates an Azure function that is triggered on a timer event. When executed it uses the node-fetch package to issue get requests to a list of sites. Essentially preventing their Application Pools from going to sleep.
+A project created from the azure-nodejs template of the Serverless Framework.
 
 This project requires that Serverless be installed as a global package.
 
@@ -14,15 +14,49 @@ To create a new Azure function, run the following
 serverless create --template azure-nodejs
 ```
 
+## Defining Additional Functions
+
+To add more functions to the project, run the following
+
+```
+serverless func add -n YOUR_FUNCTION_NAME
+```
+
+Alternatively to delete a function from the project, run the following
+
+```
+serverless func remove -n YOUR_FUNCTION_NAME
+```
+
 ## How to Use
 
-Edit the serverless.yml definitions to match the Azure settings for region, function prefix, subscription id, and resource group.
+Edit the **serverless.yml** definitions to match the Azure settings for region, function prefix, subscription id, and resource group.
 
 Then issue a deployment
 
 ```
 serverless deploy
 ```
+
+## Azure Functions
+
+| Function                    | Event | Description                                                                                                                    |
+| --------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **RunSitesHeartbeat**       | Timer | Loops through a list of sites on a timer interval to prevent their Application Pools from idling.                              |
+| **NotifySiteUpdatedMailer** | Http  | Receives a subject, to email address, sites list (comma separated), and source text via POST; then sends a notification email. |
+
+## Use Cases
+
+Consumption Azure functions' first million executions are free. Therefore functions can supplement other workflows at any scale.
+
+Source: https://azure.microsoft.com/en-gb/pricing/details/functions/
+
+Below are use case examples of how these functions are currently used.
+
+| Function                    | Case                                                                                                                                                                                                                          |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **RunSitesHeartbeat**       | Implements the 'Always On' feature that is unavailable with B1 instances of Web Apps by calling the list of sites every 15 minutes.                                                                                           |
+| **NotifySiteUpdatedMailer** | Sends an email notification after a [GitHub workflow](https://github.com/romayneeastmond/react-storybook-json-server-demo/blob/main/.github/workflows/azure-webapps-combined.yml) showing that the deployment was successful. |
 
 ## Known Issues
 

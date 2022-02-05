@@ -13,16 +13,26 @@ provider:
   resourceGroup: dev-nodejs-functions-re01
 package:
   patterns:
-    - "package.json"
+    - package.json
+    - "!.env"
     - "!.vscode"
     - "!local.settings.json"
     - "!README*"
 functions:
   RunSitesHeartbeat:
-    handler: src/handlers/handler.RunSitesHeartbeat
+    handler: src/handlers/RunSitesHeartbeat.handler
     events:
       - timer: true
         name: RunSitesHeartbeat
         x-azure-settings:
           schedule: 0 */15 * * * *
     name: azure-heartbeat-dev-hello
+  NotifySiteUpdatedMailer:
+    handler: src/handlers/notifySiteUpdatedMailer.handler
+    events:
+      - http: true
+        name: NotifySiteUpdatedMailer
+        authLevel: anonymous
+      - http: true
+        direction: out
+        name: res
