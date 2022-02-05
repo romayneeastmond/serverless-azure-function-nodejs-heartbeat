@@ -1,4 +1,4 @@
-# Severless Framework Azure Functions, Sites Heartbeat
+# Severless Framework Azure Functions
 
 A project created from the azure-nodejs template of the Serverless Framework.
 
