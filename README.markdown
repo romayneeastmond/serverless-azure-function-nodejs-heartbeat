@@ -45,7 +45,7 @@ serverless deploy
 | **RunSitesHeartbeat**       | Timer | Loops through a list of sites on a timer interval to prevent their Application Pools from idling.                              |
 | **NotifySiteUpdatedMailer** | Http  | Receives a subject, to email address, sites list (comma separated), and source text via POST; then sends a notification email. |
 
-## Use Cases
+### Use Cases
 
 Consumption Azure functions' first million executions are free. Therefore functions can supplement other workflows at any scale.
 
