@@ -8,7 +8,7 @@ const sites = [
     'https://dev-nodejs-json-server-re01.azurewebsites.net'
 ];
 
-module.exports.RunSitesHeartbeat = async (context, eventTimer) => {
+const run = async (context, eventTimer) => {
     context.log(`${new Date()} Called RunSitesHeartbeat.`);
 
     await Promise.all(sites.map(async (site) => {
@@ -24,3 +24,10 @@ module.exports.RunSitesHeartbeat = async (context, eventTimer) => {
     context.log(`${new Date()} End RunSitesHeartbeat.`);
 };
 
+module.exports.handler = async (context, eventTimer) => {
+    run(context, eventTimer)
+};
+
+// (async () => {
+//     run(console, null);
+// })();

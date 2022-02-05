@@ -11,7 +11,8 @@
     "serverless"
   ],
   "dependencies": {
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "nodemailer": "^6.7.2"
   },
   "devDependencies": {
     "serverless-azure-functions": "^2.0.0",
