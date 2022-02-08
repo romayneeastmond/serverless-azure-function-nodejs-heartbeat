@@ -27,7 +27,3 @@ const run = async (context, eventTimer) => {
 module.exports.handler = async (context, eventTimer) => {
     run(context, eventTimer)
 };
-
-// (async () => {
-//     run(console, null);
-// })();

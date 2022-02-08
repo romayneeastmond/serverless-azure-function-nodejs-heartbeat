@@ -61,19 +61,3 @@ module.exports.handler = async function (context, req) {
 
     context.log(`${new Date()} End NotifySiteUpdatedMailer.`);
 };
-
-// (async () => {
-//     await httpHandler(console,
-//         process.env['SMTP_SERVER_NAME'],
-//         process.env['SMTP_USER'],
-//         process.env['SMTP_PASSWORD'],
-//         'Update Notification',
-//         'to@emailaddress.com',
-//         [
-//             'url',
-//             'optional additional url'
-//         ],
-//         'Manual Testing',
-//         process.env['MAIL_FROM'],
-//     );
-// })();
