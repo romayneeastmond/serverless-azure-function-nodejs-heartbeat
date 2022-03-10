@@ -4,7 +4,6 @@ const sites = [
     'https://dev-react-demo-re01.azurewebsites.net/',
     'https://dev-react-typescript-demo-re01.azurewebsites.net/',
     'https://dev-react-demo-storybook-re01.azurewebsites.net/',
-    'https://sandbox-calgarywebdev-re01.azurewebsites.net',
     'https://dev-nodejs-json-server-re01.azurewebsites.net'
 ];
 
